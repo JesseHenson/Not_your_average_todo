@@ -1,0 +1,20 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.bg-dark-primary {
+  background-color: #1c313a;
+}
+
+.bg-primary {
+  background-color: #455a64;
+}
+
+#root {
+  margin: 0;
+}
+
+.accent {
+  color: #ff9100;
+}
