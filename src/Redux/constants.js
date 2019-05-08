@@ -1,0 +1,6 @@
+export const COMPLETE_ITEM = "COMPLETE_ITEM";
+export const ADD_ITEM = "ADD_ITEM";
+export const SORT_TABLE = "SORT_TABLE";
+export const REVERSE_SORT_TABLE = "REVERSE_SORT_TABLE";
+export const FILTER_TABLE = "FILTER_TABLE";
+export const COMPLETED_FILTER_TABLE = "COMPLETED_FILTER_TABLE";

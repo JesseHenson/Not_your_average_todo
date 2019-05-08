@@ -7,7 +7,7 @@ import {
   REVERSE_SORT_TABLE,
   FILTER_TABLE,
   COMPLETED_FILTER_TABLE
-} from "./index";
+} from "../../../Redux/constants";
 
 const mapStateToProps = state => {
   return { todoList: state.todoList };
@@ -94,9 +94,10 @@ class ConnectedList extends Component {
 // add sort functionality
 // for both name and for completed properties
 
-const List = connect(
+const Todo = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedList);
 
-export default List;
+export default Todo;
+
