@@ -13,17 +13,18 @@ import { fetchTodos } from "../../../Redux/actions";
 const mapStateToProps = (state) => {
   return ({
     todos: state.request.json,
-    loading: state.request.loading
+    loading: state.request.loading,
+
   })
 
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchItems: fetchTodos,
+    fetchItems: ()=>dispatch(fetchTodos()),
     completeItem: index => dispatch({ type: COMPLETE_ITEM, index }),
     addItem: item => dispatch({ type: ADD_ITEM, item }),
-    sort: sorter => dispatch({ type: SORT_TABLE, sorter }),
+    sort: (sorter) => dispatch({ type: SORT_TABLE, sorter}),
     reverseSort: sorter => dispatch({ type: REVERSE_SORT_TABLE, sorter }),
     filterTable: value => dispatch({ type: FILTER_TABLE, value }),
     completeFilter: () => dispatch({ type: COMPLETED_FILTER_TABLE })
@@ -33,8 +34,7 @@ const mapDispatchToProps = dispatch => {
 class ConnectedList extends Component {
 
   componentDidMount(){
-    const something = this.props.fetchItems()
-    console.log(something())
+    this.props.fetchItems()
   }
 
   render() {
@@ -62,17 +62,17 @@ class ConnectedList extends Component {
               </div>
               <div className="flex flex-row items-center">
                 <i
-                  onClick={() => this.props.sort("title")}
+                  onClick={() => this.props.sort("completed")}
                   className="fas fa-arrow-circle-down"
                 />
                 <i
-                  onClick={() => this.props.reverseSort("title")}
+                  onClick={() => this.props.reverseSort("completed")}
                   className="fas fa-arrow-circle-up"
                 />
                 <p onClick={() => this.props.completeFilter()}>Completed</p>
               </div>
             </div>
-            {this.props.todoList.map(todo =>
+            {this.props.todos.map(todo =>
               !todo.hidden ? (
                 <div
                   key={todo.id}
