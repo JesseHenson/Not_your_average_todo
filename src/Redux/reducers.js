@@ -7,6 +7,9 @@ import {
     FILTER_TABLE
 } from './constants'
 
+import { REQUEST_TODOS, RECEIVE_TODOS } from './actions';
+import { combineReducers } from 'redux';
+
 const initialState = {
     todoList: [
       { id: 1, title: "alpha", completed: true, hidden: false },
@@ -15,7 +18,20 @@ const initialState = {
       { id: 3, title: "carl", completed: false, hidden: false }
     ],
     isFiltered: false
-  };
+};
+
+const requestReducer = (state = {}, action) => {
+  switch (action.type) {
+    case REQUEST_TODOS:
+      console.log("that")
+        return { ...state, loading: true };
+    case RECEIVE_TODOS:
+      console.log("worked")
+        return { ...state, json: action.json, loading: false };
+    default:
+        return state;
+  }
+};
 
 const todoReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -79,4 +95,6 @@ const todoReducer = (state = initialState, action) => {
   };
   
 
-  export default todoReducer
+  const combinedReducer = combineReducers({todos: todoReducer, request: requestReducer})
+
+  export default combinedReducer

@@ -7,7 +7,6 @@ const Header = () => {
       <div className="flex flex-row justify-between bg-dark-primary">
         <div className="flex flex-row justify-around items-center">
           <Link to="/" className="f3 ma2 grow glow o-60 white pointer">Home</Link>
-          <Link to="/Landing" className="f3 ma2 grow glow o-60 white pointer">Landing</Link>
           <Link to="/Todo" className="f3 ma2 grow glow o-60 white pointer">Todo</Link>
           <Link to="/Kanbaan" className="f3 ma2 grow glow o-60 white pointer">Kanbaan</Link>
         </div>

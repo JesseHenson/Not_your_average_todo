@@ -11,7 +11,6 @@ import App from "./Components/App/index";
 
 
 
-
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>

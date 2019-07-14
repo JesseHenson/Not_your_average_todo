@@ -5,7 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 
 const App = () => (
     <Router>
-        <div className="App bg-silver vh-100">
+        <div className="App bg-dark h-100">
             <Header />
             <Main/>
         </div>
