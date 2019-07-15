@@ -41,11 +41,25 @@ class ConnectedList extends Component {
     let todos = ""
     {if (this.props.todos) {
       todos = (
-          <div className="flex flex-column items-center br3">
-            <input
-              className="bg-primary mv3 br2 bn no-outline"
-              onChange={event => this.props.filterTable(event.target.value)}
-            />
+          <div className="flex flex-column items-center br3 mb-5">
+            <div className="flex flex-row w-50 justify-content-around">
+              <button
+                onClick={() =>
+                  this.props.addItem({
+                    id: this.props.todos.length + 1,
+                    title: "this other",
+                    completed: false
+                  })
+                }
+                className="bg-dark-primary white f3 mv3 b--black br3 shadow-3 glow grow o-90"
+              >
+                Add Item
+              </button>
+              <input
+                className="bg-primary mv3 br2 bn no-outline"
+                onChange={event => this.props.filterTable(event.target.value)}
+              />
+            </div>
             <div className="flex flex-row w-80 justify-between ph4 bg-dark-primary white">
               <div className="flex flex-row items-center">
                 <p className="mh2" onClick={() => this.props.sort("title")}>
@@ -86,18 +100,7 @@ class ConnectedList extends Component {
               ) : null
             )}
             <div>
-              <button
-                onClick={() =>
-                  this.props.addItem({
-                    id: 5,
-                    title: "this other",
-                    completed: false
-                  })
-                }
-                className="bg-dark-primary white f3 mv3 b--black br3 shadow-3 glow grow o-90"
-              >
-                Add Item
-              </button>
+              
             </div>
           </div>
           

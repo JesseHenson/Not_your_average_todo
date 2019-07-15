@@ -21,6 +21,7 @@ const requestReducer = (state = {}, action) => {
     case COMPLETE_ITEM:
       return {...state, json: [...state.json.map(el => el.id === action.index ? { ...el, completed: !el.completed } : { ...el })]};
     case ADD_ITEM:
+      console.log(action.item)
       return {...state, json: state.json.concat(action.item)};
     case SORT_TABLE:
       return {...state, json: [...state.json.sort((a, b) => a[action.sorter] < b[action.sorter] ? -1 : 1)]};
@@ -29,11 +30,11 @@ const requestReducer = (state = {}, action) => {
     case FILTER_TABLE:
       return {...state, json: [...state.json.map(el => el.title.includes(action.value) ? { ...el, hidden: false } : { ...el, hidden: true })]};
     case COMPLETED_FILTER_TABLE:
-      return !state.isFiltered ? {...state, json: [...state.json.map(el => el.completed ? { ...el, hidden: false } : { ...el, hidden: true })],
-            isFiltered: !state.isFiltered
-          }
+      return !state.isFiltered ? 
+        {...state, json: [...state.json.map(el => el.completed ? { ...el, hidden: false } : { ...el, hidden: true })],
+            isFiltered: !state.isFiltered}
         : {
-            todoList: [...state.todoList.map(el => ({ ...el, hidden: false }))],
+            json: [...state.json.map(el => ({ ...el, hidden: false }))],
             isFiltered: !state.isFiltered
           };
     default:
@@ -44,22 +45,7 @@ const requestReducer = (state = {}, action) => {
 const todoReducer = (state = {}, action) => {
     switch (action.type) {
       
-      case COMPLETED_FILTER_TABLE:
-        return !state.isFiltered
-          ? {
-              todoList: [
-                ...state.todoList.map(el =>
-                  el.completed
-                    ? { ...el, hidden: false }
-                    : { ...el, hidden: true }
-                )
-              ],
-              isFiltered: !state.isFiltered
-            }
-          : {
-              todoList: [...state.todoList.map(el => ({ ...el, hidden: false }))],
-              isFiltered: !state.isFiltered
-            };
+      
       default:
         return state;
     }
